@@ -91,6 +91,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="image\LumbergArrives.jpg" />
+    <Content Include="image\lumberghNoResponse.jpg" />
     <Content Include="image\LumberghOK.png" />
     <Content Include="image\LumberghTimeout.png" />
   </ItemGroup>

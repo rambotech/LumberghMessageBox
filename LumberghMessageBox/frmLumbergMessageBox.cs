@@ -14,7 +14,7 @@ namespace BOG.LumberghMessageBox
     {
         string _Message = string.Empty;
         int _InitialTimeout = 10000;
-        int _FinalTimeout = 5000;
+        int _FinalTimeout = 10000;
 
         bool IsClosing = false;
         bool HadWhatDoYaSay = false;
@@ -67,17 +67,18 @@ namespace BOG.LumberghMessageBox
                     {
                         this.pictureBox1.Image = imageList1.Images["LumberghTimeout"];
                         this.Text = "Yaaaaaaaaahhhh ...";
-                    }
-                    else
+						this.timer1.Interval = 5000;
+					}
+					else
                     {
                         this.pictureBox1.Image = imageList1.Images["LumberghOK"];
-                        this.Text = "Thanks ...";
-                    }
-                    this.btnOK.Visible = false;
+                        this.Text = "OK ... Thanks ...";
+						this.timer1.Interval = 2000;
+					}
+					this.btnOK.Visible = false;
                     this.txtMessage.Visible = false;
                     IsClosing = true;
                     e.Cancel = true;
-                    this.timer1.Interval = 2000;
                     this.timer1.Start();
                 }
             }
@@ -108,8 +109,10 @@ namespace BOG.LumberghMessageBox
                 this.Close();
                 return;
             }
-            this.Text = "So what do ya say, Peter? ...";
-            HadWhatDoYaSay = true;
+            this.Text = "?";
+			this.txtMessage.Text = "So what do ya say, Peter? ...\r\n\r\n" + this.txtMessage.Text;
+			this.pictureBox1.Image = imageList1.Images["LumberghNoResponse"];
+			HadWhatDoYaSay = true;
             timer2.Interval = _FinalTimeout;
             timer2.Enabled = true;
             timer2.Start();
